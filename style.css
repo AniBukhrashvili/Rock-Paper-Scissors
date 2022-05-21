@@ -1,0 +1,63 @@
+h1 {
+    text-align: center;
+}
+
+.flex-container,
+.scores,
+.flex-container-btn {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex-container-btn {
+    width: 40%;
+}
+
+.player-choice,
+#player-score {
+    flex: 1;
+    text-align: center;
+}
+
+.computer-choice,
+#computer-score {
+    flex: 1;
+    text-align: center;
+}
+
+.result-message {
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.rock,
+.paper,
+.scissors {
+    flex: 1;
+    text-align: center;
+    margin-top: 70px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    height: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.main-div {
+    background-color: #d3e5e4;
+    border-radius: 30px;
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
