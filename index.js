@@ -1,57 +1,66 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const playerNumber = document.getElementById('player-score');
+const computerNumber = document.getElementById('computer-score');
+const outcome = document.getElementById('outcome');
+
 function computerPlay() {
     let randomComputerChoice = ['rock', 'paper', 'scissors'];
     let getChoice = Math.floor(Math.random() * randomComputerChoice.length)
     return randomComputerChoice[getChoice];
 }
 
-// function capitalize(choice) {
-//     return choice.charAt(0).toUpperCase() + choice.slice(1);
-// }
+function play(id) {
+    playRound(id, computerPlay())
+}
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return "It's tie";
-    } else if ((playerSelection == "rock") && (computerSelection == "scissors")) {
-        playerScore += 1;
-        return "Player won! Rock beats scissors";
+
+    if ((playerSelection == "rock") && (computerSelection == "scissors")) {
+        playerNumber.textContent = playerScore += 1;
+        playerNumber.style.color = 'white';
+        outcome.textContent = "Player won! Rock beats scissors";
+        outcome.style.color = 'gray';
     } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
-        playerScore += 1;
-        return "Player won! Paper beats rock";
+        playerNumber.textContent = playerScore += 1;
+        playerNumber.style.color = 'white';
+        outcome.textContent = "Player won! Paper beats rock";
+        outcome.style.color = 'gray';
     } else if ((playerSelection == "scissors") && (computerSelection == "paper")) {
-        playerScore += 1;
-        return "Player won! Scissors beats paper";
+        playerNumber.textContent = playerScore += 1;
+        playerNumber.style.color = 'white';
+        outcome.textContent = "Player won! Scissors beats paper";
+        outcome.style.color = 'gray';
     } else if ((playerSelection == "paper") && (computerSelection == "scissors")) {
-        computerScore += 1;
-        return "Computer won! Scissors beats paper";
+        computerNumber.textContent = computerScore += 1;
+        computerNumber.style.color = 'white';
+        outcome.textContent = "Computer won! Scissors beats paper";
+        outcome.style.color = 'gray';
     } else if ((playerSelection == "scissors") && (computerSelection == "rock")) {
-        computerScore += 1;
-        return "Computer won! Rock beats scissors";
+        computerNumber.textContent = computerScore += 1;
+        computerNumber.style.color = 'white';
+        outcome.textContent = "Computer won! Rock beats scissors";
+        outcome.style.color = 'gray';
     } else if ((playerSelection == "rock") && (computerSelection == "paper")) {
-        computerScore += 1;
-        return "Computer won! Paper beats rock";
-    }
-}
-
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Enter which one you choose: rock/scissors/paper");
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-
-    if (playerScore > computerScore) {
-        console.log("The winner is Player");
-    } else if (computerScore > playerScore) {
-        console.log("The winner is computer")
+        computerNumber.textContent = computerScore += 1;
+        computerNumber.style.color = 'white';
+        outcome.textContent = "Computer won! Paper beats rock";
+        outcome.style.color = 'gray';
     } else {
-        console.log("Draw")
+        outcome.textContent = "It's tie";
+        outcome.style.color = 'gray';
     }
-    console.log('Player Score is:', playerScore);
-    console.log('Computer Score is:', computerScore);
+
+    discloseResult();
 }
 
-game();
+function discloseResult() {
+    if (playerScore === 5) {
+        outcome.textContent = "Congratulations! You won!"
+        outcome.style.color = "red";
+    } else if (computerScore === 5) {
+        outcome.textContent = "The computer won the game! Press RESET button and try again."
+        outcome.style.color = "red";
+    }
+}
